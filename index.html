@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alastair Punler - Drilling Engineer and Python Developer</title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__logo" href="#hero" data-nav-logo>AP Rigbyte</a>
+      <ul class="nav__links">
+        <li><a href="#about" data-nav-link>About</a></li>
+        <li><a href="#projects" data-nav-link>Projects</a></li>
+        <li><a href="#links" data-nav-link>Links</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="hero" data-hero>
+      <div class="hero__content">
+        <p class="eyebrow" data-tagline><!-- TODO: Update SITE_DATA.tagline with your real message. --></p>
+        <h1>Alastair Punler</h1>
+        <p class="hero__description" data-hero-description>
+          <!-- TODO: Replace placeholder hero description via SITE_DATA.bio. -->
+        </p>
+        <div class="hero__actions">
+          <button type="button" class="button button--primary" data-drill-button>Drill</button>
+          <button type="button" class="button button--ghost" data-reset-button>Reset</button>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <figure class="hero__rig util-grid-helper">
+          <img src="assets/rig.svg" alt="" width="320" height="180" loading="lazy">
+        </figure>
+        <div class="hero__scene" data-strata>
+          <img src="assets/strata.svg" alt="" class="hero__strata" loading="lazy">
+          <div class="hero__tunnel" aria-hidden="true" data-tunnel></div>
+          <img src="assets/bit.svg" alt="Drill bit moving through strata" class="hero__bit" data-bit>
+          <ul class="hero__layer-badges">
+            <li class="hero__layer-badge" data-layer-badge data-depth="70">Sand</li>
+            <li class="hero__layer-badge" data-layer-badge data-depth="150">Shale</li>
+            <li class="hero__layer-badge" data-layer-badge data-depth="230">Carbonate</li>
+            <li class="hero__layer-badge" data-layer-badge data-depth="310">Basalt</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--about" id="about">
+      <div class="section__header">
+        <h2>About</h2>
+        <p class="section__intro">Field-tested drilling engineer leveling up with code.</p>
+      </div>
+      <div class="about" data-about>
+        <div class="about__bio">
+          <p data-bio><!-- TODO: Replace SITE_DATA.bio with your story. --></p>
+          <a class="button button--secondary" data-cv-link href="#" download>Download CV</a>
+        </div>
+        <div class="about__skills">
+          <h3>Core Skills</h3>
+          <ul class="skills-grid" data-skills-grid>
+            <!-- Rendered via main.js -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--projects" id="projects">
+      <div class="section__header">
+        <h2>Projects</h2>
+        <p class="section__intro">A sampling of Python tools and drilling analytics experiments.</p>
+      </div>
+      <div class="projects-grid" data-projects-grid>
+        <!-- Populated via main.js -->
+      </div>
+    </section>
+
+    <section class="section section--links" id="links">
+      <div class="section__header">
+        <h2>Links</h2>
+        <p class="section__intro">Connect, collaborate, or drop a line.</p>
+      </div>
+      <div class="links-panel">
+        <a class="button button--link" data-linkedin href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="button button--link" data-github href="#" target="_blank" rel="noopener">GitHub</a>
+        <button type="button" class="button button--copy" data-copy-email>Copy email</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer__meta">
+      <button type="button" class="button button--toggle" data-theme-toggle aria-pressed="false" aria-label="Toggle theme">
+        Toggle theme
+      </button>
+      <span class="footer__updated" data-updated><!-- Filled via main.js --></span>
+    </div>
+    <p class="footer__note">Hand-built in HTML, CSS, and vanilla JS.</p>
+  </footer>
+
+  <aside class="modal" data-modal aria-hidden="true">
+    <div class="modal__overlay" data-modal-overlay></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-describedby="project-modal-description">
+      <button type="button" class="modal__close button button--icon" data-modal-close aria-label="Close project details">
+        X
+      </button>
+      <div class="modal__body">
+        <img src="" alt="" class="modal__image" data-modal-image>
+        <h3 id="project-modal-title" data-modal-title></h3>
+        <p id="project-modal-description" data-modal-description></p>
+        <ul class="modal__tech" data-modal-tech></ul>
+        <div class="modal__links">
+          <a href="#" class="button button--secondary" target="_blank" rel="noopener" data-modal-github>GitHub</a>
+          <a href="#" class="button button--secondary" target="_blank" rel="noopener" data-modal-live>Live Demo</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="toast" role="status" aria-live="polite" data-toast hidden></div>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

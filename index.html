@@ -21,8 +21,9 @@
       --ink:#0e1a22;
       --ink-soft:#1f3a49;
       --white:#ffffff;
-      --rail:120px;
-      --rig-height: 180px;
+      --rail:75px;
+      --rig-height: 240px;
+      --waterline-offset: 42px;
       --sky-height: 30vh;
       --ocean-height: 26vh;
       --formation-top: calc(var(--sky-height) + var(--ocean-height));
@@ -224,22 +225,22 @@
 
 
     .page{
-      position:relative;
-      z-index:1;
-      max-width:1100px; margin:0 auto; padding:24px 16px 64px;
-      display:grid; grid-template-columns: var(--rail) 1fr; gap:20px;
-      min-height:100vh;
+      max-width:1500px;
+      margin:0px 100px 64px ;  /* small custom left margin */
+      padding:24px 16px 64px;
+      display:grid;
+      grid-template-columns: var(--rail) 1fr;
+      gap:100px;
     }
 
     .drill-rail{
       position:relative;
       min-height:80vh;
-      border-right: 4px solid rgba(0,0,0,.15);
-      padding-top:max(0px, calc(var(--sky-height) - var(--rig-height) + 24px));
+      padding-top:max(0px, calc(var(--sky-height) - var(--rig-height) + var(--waterline-offset)));
     }
     .rig-placeholder{
       position:sticky;
-      top:calc(var(--sky-height) - var(--rig-height) + calc(var(--sprite) * 0.4));
+      top:calc(var(--sky-height) - var(--rig-height) + var(--waterline-offset));
       width:100%;
       height:var(--rig-height);
       display:flex;
@@ -257,7 +258,7 @@
       width:auto;
       display:block;
       image-rendering:pixelated;
-      filter: drop-shadow(0 calc(var(--sprite) * 0.2) 0 rgba(0,0,0,0.35));
+      filter: drop-shadow(3px calc(var(--sprite) * 0.2) 0 rgba(0,0,0,0.35));
     }
 
     main{display:block}
@@ -268,7 +269,7 @@
     .avatar{
       width:140px; height:140px; border-radius:50%;
       border:6px solid var(--ink-soft);
-      box-shadow: 0 10px 0 var(--ink-soft);
+      box-shadow: 0 5px 0 var(--ink-soft);
       background: radial-gradient(circle at 35% 35%, #0b3a4d 0 40%, #102a36 41% 100%);
       overflow:hidden;
       display:flex;
@@ -277,6 +278,7 @@
       width:100%; height:100%;
       object-fit:cover;
       display:block;
+      filter: drop-shadow(10px) 0 rgba(0,0,0,0.35)
     }
     .namecard{
       background: var(--card); color:var(--white);

@@ -154,9 +154,16 @@
     }
     .avatar{
       width:140px; height:140px; border-radius:50%;
-      background: radial-gradient(circle at 35% 35%, #0b3a4d 0 40%, #102a36 41% 100%);
       border:6px solid var(--ink-soft);
       box-shadow: 0 10px 0 var(--ink-soft);
+      background: radial-gradient(circle at 35% 35%, #0b3a4d 0 40%, #102a36 41% 100%);
+      overflow:hidden;
+      display:flex;
+    }
+    .avatar img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
     }
     .namecard{
       background: var(--card); color:var(--white);
@@ -214,7 +221,9 @@
 
     <main>
       <section class="hero">
-        <div class="avatar"></div>
+        <div class="avatar">
+          <img src="display image.png" alt="Portrait of Alastair Punler" />
+        </div>
         <div class="namecard">
           <h1>Alastair Punler</h1>
           <h2>Drilling Engineer</h2>

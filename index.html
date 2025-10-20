@@ -6,21 +6,26 @@
   <title>Alastair Punler Portfolio</title>
   <style>
     :root{
-      --px: 50px;   
+      --px: 50px;
+      --sprite: 10px;
       --bg-sky:#a8dbff;
-      --bg-ocean-light:#2aa9ff;
-      --bg-ocean:#1175e6;
-      --bg-ocean-dark:#083c97;
-      --bg-sand1:#d6b36c;
-      --bg-sand2:#c79a4e;
-      --bg-sand3:#b58341;
-      --bg-sand4:#9c6a34;
+      --bg-ocean-light:#41c0ff;
+      --bg-ocean:#0f7ae6;
+      --bg-ocean-dark:#06338f;
+      --bg-sand1:#f2d9a0;
+      --bg-sand2:#d8b173;
+      --bg-sand3:#b07a45;
+      --bg-sand4:#7c4d2b;
       --card:#5fa9c6;
       --card-dark:#3b6f85;
       --ink:#0e1a22;
       --ink-soft:#1f3a49;
       --white:#ffffff;
       --rail:120px;
+      --rig-height: 180px;
+      --sky-height: 30vh;
+      --ocean-height: 26vh;
+      --formation-top: calc(var(--sky-height) + var(--ocean-height));
     }
 
     *{box-sizing:border-box}
@@ -33,98 +38,194 @@
       image-rendering: pixelated;
     }
 
+    .sky,
+    .ocean,
+    .formation{
+      position:fixed;
+      left:0;
+      right:0;
+      pointer-events:none;
+    }
 
-      /* full-width terrain area starts where the ocean ends */
-  .terrain{
-    position:fixed;
-    left:0; right:0;
-    top:55vh; bottom:0;
-    z-index:-1;              /* sits behind your content */
-  }
-
-  /* base bedrock */
-  .terrain{ background: var(--bg-sand4);
-   }
-
-  /* mid layer with stairs */
-  .terrain::before,
-  .terrain::after{
-    content:"";
-    position:absolute; inset:0;
-  }
-
-  .terrain::before{
-    background: var(--bg-sand3);
-    /* stepped skyline made from x,y pairs.
-      Move horizontally, then drop by whole blocks. */
-    clip-path: polygon(
-      0% calc(10*var(--px)),
-      20% calc(10*var(--px)),
-      20% calc(12*var(--px)),
-      35% calc(12*var(--px)),
-      35% calc(14*var(--px)),
-      55% calc(14*var(--px)),
-      55% calc(13*var(--px)),
-      72% calc(13*var(--px)),
-      72% calc(15*var(--px)),
-      100% calc(15*var(--px)),
-      100% 100%,
-      0% 100%
-    );
-  }
-
-  .terrain::after{
-    background: var(--bg-sand2);
-    clip-path: polygon(
-      0% calc(3*var(--px)),
-      12% calc(3*var(--px)),
-      12% calc(5*var(--px)),
-      28% calc(5*var(--px)),
-      28% calc(7*var(--px)),
-      48% calc(7*var(--px)),
-      48% calc(6*var(--px)),
-      70% calc(6*var(--px)),
-      70% calc(8*var(--px)),
-      100% calc(8*var(--px)),
-      100% 100%,
-      0% 100%
-    );
-
-    
-}
-
-    body::before{
-      content:"";
-      position:fixed; inset:0; z-index:-2;
+    .sky{
+      top:0;
+      height:var(--sky-height);
+      z-index:-4;
       background:
-        /* ocean gradient */
-        linear-gradient(to bottom,
-          var(--bg-sky) 0 28vh,
-          var(--bg-ocean-light) 28vh 34vh,
-          var(--bg-ocean) 34vh 50vh,
-          var(--bg-ocean-dark) 50vh 65vh,
-          /* layered formation */
-          var(--bg-sand1) 65vh 72vh,
-          var(--bg-sand2) 72vh 80vh,
-          var(--bg-sand3) 80vh 88vh,
-          var(--bg-sand4) 88vh 100vh
+        linear-gradient(180deg, #fdfcff 0%, var(--bg-sky) 65%, #86cfff 100%);
+    }
+
+    .sky::before,
+    .sky::after{
+      content:"";
+      position:absolute;
+      display:block;
+      image-rendering: pixelated;
+    }
+
+    .sky::before{
+      top:calc(var(--sprite) * 2);
+      left:calc(var(--sprite) * 2);
+      width:var(--sprite);
+      height:var(--sprite);
+      background:rgba(255,255,255,0.95);
+      box-shadow:
+        calc(var(--sprite) * 1) 0 rgba(255,255,255,0.95),
+        calc(var(--sprite) * -1) calc(var(--sprite) * 1) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 0) calc(var(--sprite) * 1) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 1) calc(var(--sprite) * 1) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 2) calc(var(--sprite) * 1) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 0) calc(var(--sprite) * 2) rgba(214,240,255,0.9),
+        calc(var(--sprite) * 1) calc(var(--sprite) * 2) rgba(214,240,255,0.9),
+        calc(var(--sprite) * 2) calc(var(--sprite) * 2) rgba(214,240,255,0.9),
+        calc(var(--sprite) * 6) calc(var(--sprite) * -1) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 7) calc(var(--sprite) * -1) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 5) calc(var(--sprite) * 0) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 6) calc(var(--sprite) * 0) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 7) calc(var(--sprite) * 0) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 8) calc(var(--sprite) * 0) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 5) calc(var(--sprite) * 1) rgba(214,240,255,0.9),
+        calc(var(--sprite) * 6) calc(var(--sprite) * 1) rgba(255,255,255,0.95),
+        calc(var(--sprite) * 7) calc(var(--sprite) * 1) rgba(214,240,255,0.9),
+        calc(var(--sprite) * 6) calc(var(--sprite) * 2) rgba(214,240,255,0.9);
+    }
+
+    .sky::after{
+      top:calc(var(--sprite) * 1.5);
+      right:calc(var(--sprite) * 3);
+      width:var(--sprite);
+      height:var(--sprite);
+      background:#ffe066;
+      box-shadow:
+        calc(var(--sprite) * 1) 0 #ffe066,
+        calc(var(--sprite) * -1) calc(var(--sprite) * 1) #ffe066,
+        calc(var(--sprite) * 0) calc(var(--sprite) * 1) #ffd24a,
+        calc(var(--sprite) * 1) calc(var(--sprite) * 1) #ffe066,
+        calc(var(--sprite) * 2) calc(var(--sprite) * 1) #ffd24a,
+        calc(var(--sprite) * -1) calc(var(--sprite) * 2) #ffd24a,
+        calc(var(--sprite) * 0) calc(var(--sprite) * 2) #ffe066,
+        calc(var(--sprite) * 1) calc(var(--sprite) * 2) #ffd24a,
+        calc(var(--sprite) * 2) calc(var(--sprite) * 2) #ffe066,
+        calc(var(--sprite) * 0) calc(var(--sprite) * 3) #ffd24a,
+        calc(var(--sprite) * 1) calc(var(--sprite) * 3) #ffe066;
+      filter: drop-shadow(0 calc(var(--sprite) * 0.2) 0 rgba(255,193,37,0.5));
+    }
+
+    .ocean{
+      top:var(--sky-height);
+      height:var(--ocean-height);
+      z-index:-3;
+      overflow:hidden;
+      background:
+        linear-gradient(
+          to bottom,
+          #41c0ff 0%,
+          #2497f0 35%,
+          #1175e6 68%,
+          #0a4fb9 85%,
+          #06338f 100%
         );
     }
 
-    body::after{
+    .ocean::before,
+    .ocean::after{
       content:"";
-      position:fixed; left:0; right:0; top:28vh; height:27vh; z-index:-1;
-      background:
-        repeating-linear-gradient( to right,
-          var(--bg-ocean-light) 0 24px,
-          var(--bg-ocean-dark) 24px 48px
-        );
-      opacity:.2;
+      position:absolute;
+      inset:0;
+      pointer-events:none;
     }
 
+    .ocean::before{
+      top:0;
+      bottom:auto;
+      height:calc(var(--sprite) * 00.5);
+      background:
+        repeating-linear-gradient(
+          to right,
+          rgba(255,255,255,0.85) 0 calc(var(--sprite) * 0.3),
+          transparent calc(var(--sprite) * 0.3) calc(var(--sprite) * 0.6)
+        ),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.55) 0 calc(var(--sprite) * 0.45),
+          transparent calc(var(--sprite) * 0.45) calc(var(--sprite) * 0.9)
+        );
+      opacity:0.5;
+      mix-blend-mode: screen;
+    }
+
+    .ocean::after{
+      background-image:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.12) 0 calc(var(--sprite) * 0.35),
+          transparent calc(var(--sprite) * 0.35) calc(var(--sprite) * 0.7)
+        ),
+        repeating-conic-gradient(
+          from 45deg,
+          rgba(255,255,255,0.1) 0% 25%,
+          transparent 25% 50%
+        );
+      background-size:
+        100% 100%,
+        calc(var(--sprite) * 0.8) calc(var(--sprite) * 0.8);
+      opacity:0.25;
+      mix-blend-mode: screen;
+    }
+
+    .formation{
+      top:var(--formation-top);
+      bottom:0;
+      z-index:-2;
+      background:
+        linear-gradient(
+          to bottom,
+          var(--bg-sand1) 0%,
+          var(--bg-sand1) 18%,
+          #dfc282 18%,
+          #dfc282 34%,
+          var(--bg-sand2) 34%,
+          var(--bg-sand2) 52%,
+          var(--bg-sand3) 52%,
+          var(--bg-sand3) 72%,
+          var(--bg-sand4) 72%,
+          var(--bg-sand4) 100%
+        );
+      overflow:hidden;
+    }
+
+    .formation::before,
+    .formation::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+    }
+
+    .formation::before{
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.1) 0 calc(var(--sprite) * 0.5),
+        transparent calc(var(--sprite) * 0.5) calc(var(--sprite) * 1)
+      );
+      opacity:0.2;
+      mix-blend-mode: plus-darker;
+    }
+
+    .formation::after{
+      background-image: repeating-conic-gradient(
+        rgba(56,31,14,0.18) 0% 25%,
+        transparent 25% 50%
+      );
+      background-size: calc(var(--sprite) * 1) calc(var(--sprite) * 1);
+      opacity:0.2;
+      mix-blend-mode:plus-darker;
+    }
 
 
     .page{
+      position:relative;
+      z-index:1;
       max-width:1100px; margin:0 auto; padding:24px 16px 64px;
       display:grid; grid-template-columns: var(--rail) 1fr; gap:20px;
       min-height:100vh;
@@ -134,17 +235,29 @@
       position:relative;
       min-height:80vh;
       border-right: 4px solid rgba(0,0,0,.15);
+      padding-top:max(0px, calc(var(--sky-height) - var(--rig-height) + 24px));
     }
     .rig-placeholder{
-      position:sticky; top:16px; width:100%;
-      display:flex; align-items:center; justify-content:center;
-      height:120px; margin-bottom:16px;
-      background: var(--card);
-      color:var(--white);
-      border:4px solid var(--ink-soft);
-      box-shadow: 0 8px 0 var(--ink-soft);
-      text-align:center; padding:8px;
-      font-weight:700;
+      position:sticky;
+      top:calc(var(--sky-height) - var(--rig-height) + calc(var(--sprite) * 0.4));
+      width:100%;
+      height:var(--rig-height);
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      margin-bottom:16px;
+      background:none;
+      border:none;
+      box-shadow:none;
+      padding:0;
+      image-rendering:pixelated;
+    }
+    .rig-placeholder img{
+      height:100%;
+      width:auto;
+      display:block;
+      image-rendering:pixelated;
+      filter: drop-shadow(0 calc(var(--sprite) * 0.2) 0 rgba(0,0,0,0.35));
     }
 
     main{display:block}
@@ -213,10 +326,14 @@
   </style>
 </head>
 <body>
-  <div class="terrain" aria-hidden="true"></div>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="ocean" aria-hidden="true"></div>
+  <div class="formation" aria-hidden="true"></div>
   <div class="page">
     <aside class="drill-rail">
-      <div class="rig-placeholder">Placeholder for rig sprite</div>
+      <div class="rig-placeholder">
+        <img src="drillship sprite.svg" alt="Pixel drillship floating on the ocean surface" />
+      </div>
     </aside>
 
     <main>

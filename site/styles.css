@@ -360,14 +360,108 @@ body h1, h2, h3 {
   border-radius: 16px;
   box-shadow: 0 10px 0 var(--ink-soft);
   padding: 10px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Give Australia a green fill */
-.svgMap-country[data-code="AU"] {
-  fill: #32a852 !important;    /* green */
-  stroke: #1c5f31 !important;  /* darker green edge */
+/* Subtle pixel grid overlay */
+.map-frame::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.06) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.06) 0 1px, transparent 1px 10px);
+  mix-blend-mode: multiply;
+  opacity: .6;
 }
 
+/* Tooltip container */
+
+
+.svgMap-tooltip {
+  z-index: 9999 !important;
+  background: #111 !important;
+  color: #fff !important;
+  border: 4px solid #333 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 6px 0 #0008 !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 9px !important;            /* smaller text */
+  line-height: 1.2 !important;
+  white-space: normal !important;
+  word-break: break-all;
+  max-width: min(720px, 90vw) !important;          /* wider tooltip */
+  padding: 5px 5px !important;        /* tighter padding */
+}
+
+/* Title */
+.svgMap-tooltip .svgMap-tooltip-title {
+  color: #fff !important;
+  font-size: 11px !important;           /* slightly smaller */
+  margin-bottom: 6px !important;
+  text-align: center;
+}
+
+/* Table layout and spacing */
+.svgMap-tooltip .svgMap-tooltip-content table {
+  table-layout: auto;
+  border-collapse: separate;
+  border-spacing: 0 3px;
+  font-size: 9px !important;            /* match tooltip text size */
+}
+
+/* Label column */
+.svgMap-tooltip .svgMap-tooltip-content th,
+.svgMap-tooltip .svgMap-tooltip-content td.svgMap-tooltip-data-key {
+  color: #BFD8FF !important;
+  font-weight: 400;
+  padding-right: 8px;
+  vertical-align: top;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+/* Value column */
+.svgMap-tooltip .svgMap-tooltip-content td,
+.svgMap-tooltip .svgMap-tooltip-content td * {
+  color: #fff !important;
+  vertical-align: top;
+}
+
+/* Hide empty rows */
+.svgMap-tooltip .svgMap-tooltip-content tr:has(td:empty) {
+  display: none !important;
+}
+
+
+
+
+/* Scope to just the world map area */
+#worldMap .svgMap-map-wrapper {
+  background: linear-gradient(180deg, var(--bg-ocean-light) 0%, var(--bg-ocean) 60%, var(--bg-ocean-dark) 100%);
+  image-rendering: pixelated;
+}
+
+#worldMap .svgMap-country:hover { filter: drop-shadow(5px 5px 0 rgba(0,0,0,.35)); }
+
+/* Blocky land with crisp edges */
+#worldMap .svgMap-country {
+  /* fill: var(--bg-sand2) !important;         /* base land */
+  stroke: var(--bg-sand3) !important;       /* 8-bit outline */
+  stroke-width: 1.5 !important;
+  vector-effect: non-scaling-stroke;
+  shape-rendering: crispEdges;
+  transition: none !important;               /* snappy retro */
+}
+
+/* Hover/focus pop */
+#worldMap .svgMap-country:hover,
+#worldMap .svgMap-country:focus {
+  fill: var(--land-hover, #ffe08a) !important;
+  stroke: var(--accent-deep, #b0851d) !important;
+  outline: none;
+}
 
 .projects{margin-top:24px}
 .projects h2{font-size:22px; margin:0 0 12px}

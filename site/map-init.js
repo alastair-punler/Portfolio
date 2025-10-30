@@ -6,8 +6,8 @@ new svgMap({
   mouseWheelZoomWithKey: true,
 
   // make every country the same color
-  colorMin: '#c4b28a',
-  colorMax: '#c4b28a',
+  colorMin: '#d8b173',
+  colorMax: '#d8b173',
   colorNoData: '#d0d5db',
   hideLegend: true,      // skip the numeric legend completely
   noDataText: '',
@@ -35,12 +35,12 @@ new svgMap({
         SY: {
             status: 'Lived',
             years: '1996 - 1998',
-            notes: 'Lived in Damascus. Followed expat parents around, too young to remember anything cool.'
+            notes: 'Lived in Damascus. Followed expat parents around.<br>Too young to remember anything cool.'
         },
         AU: {
             status: 'Home',
             years: '1998 - 2002,  2008 - 2022, 2023 - Present',
-            notes: "Perth, Western Australia is where I call home. <br> Citizen. <br> Where I studied and started my career.<br>Played a long hockey career here. <br> Worked offshore gas developments both shallow and deepwater.",
+            notes: "Perth, Western Australia is where I call home. <br> Citizen. <br> Where I studied and started my career.<br>Played a long hockey career here. <br> Worked multiple offshore gas developments in North West Shelf, both shallow and deepwater.",
             color: '#32a852',
         },
         NZ: {
@@ -58,12 +58,12 @@ new svgMap({
         US: {
             status: 'Lived & Worked',
             years: '2022 - 2023',
-            notes: 'Lived in Houston TX, Rotating to the GOM for a wildcat exploration well. '
+            notes: 'Lived in Houston, TX.<br>Rotated offshore GOM for a wildcat exploration well. '
             },
         SN: {
             status: 'Worked',
             years: '2023 & 2023',
-            notes: 'In country rotations from Australia for a a 24x well deepwater oil development.'
+            notes: 'In country rotations from Australia.<br>24x well deepwater oil development.'
       },
     }
   }

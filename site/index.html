@@ -8,8 +8,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 
-  <!-- svgMap core CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svgmap/dist/svgMap.min.css">
+  <!-- 1) pan/zoom dependency -->
+  <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+
+  <!-- 2) svgMap CSS -->
+  <link href="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.14.0/dist/svgMap.min.css" rel="stylesheet">
+
+  <!-- 3) svgMap core -->
+  <script src="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.14.0/dist/svgMap.min.js"></script>
+
+  <!-- 4) your init (after the two above) -->
+  <script src="map-init.js"></script>
 
 
     <!-- My StyleSheet -->
@@ -66,9 +75,25 @@
 
       <section class="about">
         <h2>About</h2>
-        <p>Short intro goes here. One or two sentences about what you do and what you are building. Keep it tight.</p>
-      </section>
+        <p>.</p>
+        <br><br>
+        <section class="about-map" id="about-map">
+          <h2>Around the World</h2>
+          <p> Its a long story and an infographic speaks 1000 words. Use the map below to see where I've lived and Worked.</p>
+          <br>
+          <div class="map-frame">
+            <div id="worldMap"></div>
+          </div>
 
+        </section>
+
+      </section>
+        <!-- Load scripts at the END -->
+      <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.14.0/dist/svgMap.min.js"></script>
+      <script src="map-init.js"></script>
+
+      
       <section class="projects">
         <h2>Projects</h2>
         <div class="grid">

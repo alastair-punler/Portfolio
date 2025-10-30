@@ -335,40 +335,63 @@ body h1, h2, h3 {
 .namecard a{ all: unset; }
 .namecard a{ color:#fff; cursor:pointer; }
 
-    .about{
-      margin-top:24px;
-      background: rgba(255,255,255,.2);
-      backdrop-filter: blur(2px);
-      padding:18px 20px; border:6px solid var(--ink-soft);
-      box-shadow: 0 10px 0 var(--ink-soft);
-      border-radius:20px;
-    }
-    .about h2{margin:0 0 10px; font-size:22px}
-    .about p{margin:0}
+.about{
+  margin-top:24px;
+  background: rgba(255,255,255,.2);
+  backdrop-filter: blur(2px);
+  padding:18px 20px; border:6px solid var(--ink-soft);
+  box-shadow: 0 10px 0 var(--ink-soft);
+  border-radius:20px;
+}
+.about h2{margin:0 0 10px; font-size:22px}
+.about p{margin:0}
 
-    .projects{margin-top:24px}
-    .projects h2{font-size:22px; margin:0 0 12px}
-    .grid{
-      display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:18px;
-    }
-    .card{
-      background: var(--card); color:var(--white);
-      border:6px solid var(--ink-soft); border-radius:18px;
-      box-shadow: 0 10px 0 var(--ink-soft);
-      padding:14px; text-decoration:none; display:block;
-      transition: transform .05s ease-in-out;
-    }
-    .card:hover{ transform: translateY(-3px)}
-    .card h3{margin:0 0 6px; font-size:14px}
-    .card p{margin:0; font-size:12px; opacity:.95}
 
-    footer{margin-top:36px; font-size:12px; opacity:.8}
+/* Map CSS Styling */ 
 
-    @media (max-width: 820px){
-      .page{grid-template-columns: 1fr}
-      .drill-rail{display:none}
-      .hero{grid-template-columns: 100px 1fr}
-      .avatar{width:100px; height:100px}
-    }
+.about-map {
+  max-width: 980px;
+  margin: 0;
+}
+
+.map-frame {
+  background: var(--card);
+  border: 6px solid var(--ink-soft);
+  border-radius: 16px;
+  box-shadow: 0 10px 0 var(--ink-soft);
+  padding: 10px;
+}
+
+/* Give Australia a green fill */
+.svgMap-country[data-code="AU"] {
+  fill: #32a852 !important;    /* green */
+  stroke: #1c5f31 !important;  /* darker green edge */
+}
+
+
+.projects{margin-top:24px}
+.projects h2{font-size:22px; margin:0 0 12px}
+.grid{
+  display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:18px;
+}
+.card{
+  background: var(--card); color:var(--white);
+  border:6px solid var(--ink-soft); border-radius:18px;
+  box-shadow: 0 10px 0 var(--ink-soft);
+  padding:14px; text-decoration:none; display:block;
+  transition: transform .05s ease-in-out;
+}
+.card:hover{ transform: translateY(-3px)}
+.card h3{margin:0 0 6px; font-size:14px}
+.card p{margin:0; font-size:12px; opacity:.95}
+
+footer{margin-top:36px; font-size:12px; opacity:.8}
+
+@media (max-width: 820px){
+  .page{grid-template-columns: 1fr}
+  .drill-rail{display:none}
+  .hero{grid-template-columns: 100px 1fr}
+  .avatar{width:100px; height:100px}
+}
 
 

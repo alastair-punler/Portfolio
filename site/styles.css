@@ -292,17 +292,22 @@
   max-width: 820px;   /* prevents super long lines */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-          font-smoothing: antialiased;
 }
 
 /* Type */
+body h1, h2, h3 {
+  font-family: 'Press Start 2P', sans-serif;
+  letter-spacing:1px;
+  line-height: 1.5; 
+}
+
 .namecard h1{
   margin:0;
-  font-size:26px; line-height:1.15; letter-spacing:.5px;
+  font-size:26px; line-height:1.15; 
 }
 .namecard h2{
   margin:0;
-  font-size:18px; line-height:1.2; opacity:.95; font-weight:700;
+  font-size:14px; line-height:1.2; opacity:.95; font-weight:700;
 }
 .namecard p{
   margin:2px 0 0 0;
@@ -354,8 +359,8 @@
       transition: transform .05s ease-in-out;
     }
     .card:hover{ transform: translateY(-3px)}
-    .card h3{margin:0 0 6px; font-size:18px}
-    .card p{margin:0; font-size:14px; opacity:.95}
+    .card h3{margin:0 0 6px; font-size:14px}
+    .card p{margin:0; font-size:12px; opacity:.95}
 
     footer{margin-top:36px; font-size:12px; opacity:.8}
 
@@ -365,3 +370,5 @@
       .hero{grid-template-columns: 100px 1fr}
       .avatar{width:100px; height:100px}
     }
+
+

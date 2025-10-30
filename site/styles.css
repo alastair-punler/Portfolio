@@ -20,6 +20,7 @@
       --waterline-offset: 42px;
       --sky-height: 30vh;
       --ocean-height: 26vh;
+      --page-padding-top: 24px;
       --formation-top: calc(var(--sky-height) + var(--ocean-height));
     }
 
@@ -221,7 +222,7 @@
     .page{
       max-width:1500px;
       margin:0px 100px 64px ;  /* small custom left margin */
-      padding:24px 16px 64px;
+      padding:var(--page-padding-top) 16px 64px;
       display:grid;
       grid-template-columns: var(--rail) 1fr;
       gap:100px;
@@ -234,7 +235,7 @@
     }
     .rig-placeholder{
       position:sticky;
-      top:calc(var(--sky-height) - var(--rig-height) + var(--waterline-offset));
+      top:max(0px, calc(var(--page-padding-top) + var(--sky-height) - var(--rig-height) + var(--waterline-offset)));
       width:100%;
       height:var(--rig-height);
       display:flex;

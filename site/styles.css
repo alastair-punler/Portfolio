@@ -490,7 +490,7 @@ footer{margin-top:36px; font-size:12px; opacity:.8}
   .drill-rail{
     display: block;
     position: fixed;
-    top: calc(var(--sky-height) - 120px); /* Align bottom of rig with waterline */
+    top: calc(var(--sky-height) - 90px); /* Align bottom of rig with waterline */
     left: 10px;
     width: 50px;
     height: 120px; /* Smaller rig for mobile */

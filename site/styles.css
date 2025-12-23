@@ -483,8 +483,25 @@ body h1, h2, h3 {
 footer{margin-top:36px; font-size:12px; opacity:.8}
 
 @media (max-width: 820px){
-  .page{grid-template-columns: 1fr}
-  .drill-rail{display:none}
+  .page{
+    grid-template-columns: 1fr;
+    margin: 0 20px 64px;
+  }
+  .drill-rail{
+    display: block;
+    position: fixed;
+    top: calc(var(--sky-height) - 90px); /* Align bottom of rig with waterline */
+    left: 10px;
+    width: 50px;
+    height: 120px; /* Smaller rig for mobile */
+    z-index: -1; /* Place it behind the main content */
+    padding-top: 0;
+    min-height: 0;
+  }
+  .rig-placeholder {
+    position: static; /* Remove sticky behavior */
+    height: 100%;
+  }
   .hero{grid-template-columns: 100px 1fr}
   .avatar{width:100px; height:100px}
 }

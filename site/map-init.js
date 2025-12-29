@@ -7,7 +7,7 @@ new svgMap({
 
   // make every country the same color
   colorMin: '#d8b173',
-  colorMax: '#d8b173',
+  colorMax: '#d8a44eff',
   colorNoData: '#d0d5db',
   hideLegend: true,      // skip the numeric legend completely
   noDataText: '',

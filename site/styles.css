@@ -28,8 +28,8 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: "Courier New", ui-monospace, Menlo, Consolas, monospace;
-      color:var(--ink);
+      font-family: ui-monospace, monospace;
+      color:var(--white);
       background: var(--bg-sky);
       image-rendering: pixelated;
     }

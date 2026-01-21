@@ -65,6 +65,13 @@ new svgMap({
             years: '2023 & 2023',
             notes: 'In country rotations from Australia.<br>24x well deepwater oil development.'
       },
+
+        MX: {
+              status: 'Worked',
+              years: '2026',
+              notes: 'In country rotations from Australia.<br>Deepwater oil development.',
+              color: '#32a852'
+        },
     }
   }
 });

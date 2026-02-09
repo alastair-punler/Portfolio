@@ -32,6 +32,9 @@
       color:var(--white);
       background: var(--bg-sky);
       image-rendering: pixelated;
+      font-size:16px;
+      line-height:1.7;
+      overflow-x:hidden;
     }
 
     .sky,
@@ -280,12 +283,19 @@ body h1, h2, h3 {
 .letter p{margin:0}
 
 .img-row {
-  display: inline-flex;
+  display: flex;
   gap: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .img-row img {
-  height: 300px;
+  width: auto;
+  height: auto;
+  max-height: clamp(160px, 22vw, 280px);
+  max-width: min(100%, 420px);
+  flex: 0 1 auto;
+  min-width: 0;
   border-radius: 6px;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -348,10 +358,25 @@ body h1, h2, h3 {
 
 footer{margin-top:36px; font-size:12px; opacity:.8}
 
+@media (max-width: 640px){
+  body{
+    font-size:15px;
+    line-height:1.75;
+  }
+  .img-row{
+    gap: 10px;
+  }
+  .img-row img{
+    max-height: clamp(140px, 36vw, 200px);
+    max-width: min(100%, 320px);
+  }
+}
+
 @media (max-width: 820px){
   .page{
     grid-template-columns: 1fr;
-    margin: 0 20px 64px;
+    margin: 0 16px 64px;
+    gap: 32px;
   }
   .drill-rail{
     display: block;

@@ -1,5 +1,7 @@
 FROM nginx:alpine
 
-COPY nginx.conf /etc/nginx/nginx.conf
+ENV PORT=8080
+
+COPY nginx.default.conf.template /etc/nginx/templates/default.conf.template
 COPY site /usr/share/nginx/html
 COPY site/.htpasswd /etc/nginx/.htpasswd

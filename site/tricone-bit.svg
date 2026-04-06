@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 34" shape-rendering="crispEdges">
+  <!-- Tricone Bit: side view, cones recessed into body, 8-bit pixel art -->
+
+  <defs>
+    <linearGradient id="bit-steel" x1="0" y1="0" x2="14" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
+      <stop offset="0%" stop-color="#5a5a5a"/>
+      <stop offset="30%" stop-color="#999"/>
+      <stop offset="50%" stop-color="#bbb"/>
+      <stop offset="70%" stop-color="#999"/>
+      <stop offset="100%" stop-color="#5a5a5a"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="14 0" dur="1s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ══ BIT BODY (rotates with string via gradient) ══ -->
+  <!-- Pin connection -->
+  <rect x="15" y="0" width="10" height="2" fill="url(#bit-steel)"/>
+  <!-- Body -->
+  <rect x="13" y="2" width="14" height="4" fill="url(#bit-steel)"/>
+  <rect x="12" y="2" width="1" height="4" fill="#4a4a4a"/>
+  <rect x="27" y="2" width="1" height="4" fill="#4a4a4a"/>
+  <!-- Shoulder widens -->
+  <rect x="10" y="6" width="20" height="4" fill="url(#bit-steel)"/>
+  <rect x="9"  y="6" width="1" height="4" fill="#4a4a4a"/>
+  <rect x="30" y="6" width="1" height="4" fill="#4a4a4a"/>
+
+  <!-- Shirttail legs (wrap around cones) -->
+  <rect x="9"  y="10" width="4" height="10" fill="url(#bit-steel)"/>
+  <rect x="8"  y="10" width="1" height="10" fill="#4a4a4a"/>
+  <rect x="27" y="10" width="4" height="10" fill="url(#bit-steel)"/>
+  <rect x="31" y="10" width="1" height="10" fill="#4a4a4a"/>
+  <!-- Centre leg (behind cones) -->
+  <rect x="18" y="10" width="4" height="8" fill="#555"/>
+
+  <!-- Bearing pins -->
+  <rect x="12" y="13" width="2" height="2" fill="#ccc"/>
+  <rect x="26" y="13" width="2" height="2" fill="#ccc"/>
+
+  <!-- ══ BACK CONE (behind, drawn first so front cones overlap) ══ -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate"
+      from="0 20 18" to="360 20 18" dur="1.2s" repeatCount="indefinite"/>
+    <rect x="17" y="18" width="6" height="2" fill="#777"/>
+    <rect x="16" y="20" width="8" height="2" fill="#888"/>
+    <rect x="17" y="22" width="6" height="2" fill="#777"/>
+    <!-- Teeth (darker, recessed look) -->
+    <rect x="16" y="17" width="2" height="2" fill="#333"/>
+    <rect x="22" y="17" width="2" height="2" fill="#333"/>
+    <rect x="15" y="20" width="2" height="2" fill="#333"/>
+    <rect x="23" y="20" width="2" height="2" fill="#333"/>
+    <rect x="17" y="23" width="2" height="2" fill="#333"/>
+    <rect x="21" y="23" width="2" height="2" fill="#333"/>
+    <rect x="19" y="17" width="2" height="2" fill="#666"/>
+  </g>
+
+  <!-- ══ LEFT CONE (front, recessed into body) ══ -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate"
+      from="0 14 17" to="360 14 17" dur="1s" repeatCount="indefinite"/>
+    <rect x="11" y="12" width="6" height="2" fill="#999"/>
+    <rect x="10" y="14" width="8" height="2" fill="#aaa"/>
+    <rect x="10" y="16" width="8" height="2" fill="#bbb"/>
+    <rect x="10" y="18" width="8" height="2" fill="#aaa"/>
+    <rect x="11" y="20" width="6" height="2" fill="#999"/>
+    <!-- Teeth -->
+    <rect x="11" y="11" width="2" height="2" fill="#444"/>
+    <rect x="15" y="11" width="2" height="2" fill="#444"/>
+    <rect x="9"  y="15" width="2" height="2" fill="#444"/>
+    <rect x="17" y="15" width="2" height="2" fill="#444"/>
+    <rect x="9"  y="19" width="2" height="2" fill="#444"/>
+    <rect x="17" y="19" width="2" height="2" fill="#444"/>
+    <rect x="11" y="21" width="2" height="2" fill="#444"/>
+    <rect x="15" y="21" width="2" height="2" fill="#444"/>
+    <!-- Bearing -->
+    <rect x="13" y="16" width="2" height="2" fill="#666"/>
+  </g>
+
+  <!-- ══ RIGHT CONE (front, recessed into body) ══ -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate"
+      from="360 26 17" to="0 26 17" dur="1s" repeatCount="indefinite"/>
+    <rect x="23" y="12" width="6" height="2" fill="#999"/>
+    <rect x="22" y="14" width="8" height="2" fill="#aaa"/>
+    <rect x="22" y="16" width="8" height="2" fill="#bbb"/>
+    <rect x="22" y="18" width="8" height="2" fill="#aaa"/>
+    <rect x="23" y="20" width="6" height="2" fill="#999"/>
+    <!-- Teeth -->
+    <rect x="23" y="11" width="2" height="2" fill="#444"/>
+    <rect x="27" y="11" width="2" height="2" fill="#444"/>
+    <rect x="21" y="15" width="2" height="2" fill="#444"/>
+    <rect x="29" y="15" width="2" height="2" fill="#444"/>
+    <rect x="21" y="19" width="2" height="2" fill="#444"/>
+    <rect x="29" y="19" width="2" height="2" fill="#444"/>
+    <rect x="23" y="21" width="2" height="2" fill="#444"/>
+    <rect x="27" y="21" width="2" height="2" fill="#444"/>
+    <!-- Bearing -->
+    <rect x="25" y="16" width="2" height="2" fill="#666"/>
+  </g>
+
+</svg>

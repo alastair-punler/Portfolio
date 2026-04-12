@@ -685,8 +685,32 @@ footer {
     height: 100%;
   }
 
-  /* Drill string hidden on mobile */
-  .drill-string { display: none !important; }
+  /* Simplified drill string on mobile — half scale */
+  .drill-string {
+    display: block;
+  }
+
+  .drill-pipe {
+    width: 4px;
+  }
+
+  .drill-pipe::after {
+    width: 5px;
+    left: -0.5px;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 18px,
+      #999 18px, #999 18.5px,
+      #bbb 18.5px, #bbb 19px,
+      transparent 19px);
+  }
+
+  .bha-sprite {
+    width: 20px;
+  }
+
+  .drill-bit {
+    width: 20px;
+  }
 
   .hero { grid-template-columns: 100px 1fr; }
   .avatar { width: 100px; height: 100px; }

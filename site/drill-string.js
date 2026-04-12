@@ -24,7 +24,8 @@
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     var progress  = docHeight > 0 ? Math.min(scrollY / docHeight, 1) : 0;
 
-    targetPipe = minPipe + progress * MAX_DEPTH;
+    var maxDepth = window.innerWidth <= 820 ? 700 : MAX_DEPTH;
+    targetPipe = minPipe + progress * maxDepth;
 
     // Cap so BHA stays in viewport
     var maxPipe = window.innerHeight - (rigBot - 10) - bhaH;

@@ -12,29 +12,38 @@
   var targetPipe   = 0;
   var animating    = false;
 
-  function getTarget() {
-    var rigRect  = rigImg.getBoundingClientRect();
-    var rigBot   = rigRect.bottom;
-    var rigCentX = rigRect.left + rigRect.width / 2;
-    var seabedY  = window.innerHeight * 0.56;
-    var bhaH     = bhaImg ? bhaImg.getBoundingClientRect().height : 0;
-    var minPipe  = Math.max(0, seabedY - rigBot - bhaH);
+  // Cached anchor values — set on init/resize, never during scroll.
+  // This prevents mobile browsers drifting the drill string during
+  // momentum scroll (getBoundingClientRect fluctuates mid-scroll on mobile).
+  var cachedRigBot  = 0;
+  var cachedRigCentX = 0;
+  var cachedBhaH    = 0;
+  var cachedMinPipe = 0;
 
+  function cacheRigPosition() {
+    var rigRect    = rigImg.getBoundingClientRect();
+    cachedRigBot   = rigRect.bottom;
+    cachedRigCentX = rigRect.left + rigRect.width / 2;
+    cachedBhaH     = bhaImg ? bhaImg.getBoundingClientRect().height : 0;
+    cachedMinPipe  = Math.max(0, window.innerHeight * 0.56 - cachedRigBot - cachedBhaH);
+
+    // Fix the container position once — scroll only changes pipe height
+    drillString.style.top       = (cachedRigBot - 10) + 'px';
+    drillString.style.left      = cachedRigCentX + 'px';
+    drillString.style.transform = 'translateX(-50%)';
+  }
+
+  function getTarget() {
     var scrollY   = window.scrollY || window.pageYOffset;
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     var progress  = docHeight > 0 ? Math.min(scrollY / docHeight, 1) : 0;
 
     var maxDepth = window.innerWidth <= 820 ? 700 : MAX_DEPTH;
-    targetPipe = minPipe + progress * maxDepth;
+    targetPipe = cachedMinPipe + progress * maxDepth;
 
     // Cap so BHA stays in viewport
-    var maxPipe = window.innerHeight - (rigBot - 10) - bhaH;
+    var maxPipe = window.innerHeight - (cachedRigBot - 10) - cachedBhaH;
     if (targetPipe > maxPipe) targetPipe = maxPipe;
-
-    // Position the container
-    drillString.style.top  = (rigBot - 10) + 'px';
-    drillString.style.left = rigCentX + 'px';
-    drillString.style.transform = 'translateX(-50%)';
   }
 
   function tick() {
@@ -61,6 +70,7 @@
 
   // Jump to initial position instantly (no lerp on load)
   function init() {
+    cacheRigPosition();
     getTarget();
     currentPipe = targetPipe;
     drillPipe.style.height = Math.round(currentPipe) + 'px';

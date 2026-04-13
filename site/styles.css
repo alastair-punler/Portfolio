@@ -404,7 +404,7 @@ main {
   display: block;
   width: 40px;
   height: auto;
-  margin: 0 auto;
+  margin: -2px auto 0;
   image-rendering: pixelated;
   filter: drop-shadow(1px 2px 0 rgba(0,0,0,0.3));
 }

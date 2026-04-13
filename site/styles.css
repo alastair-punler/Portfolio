@@ -430,6 +430,8 @@ main {
   background: radial-gradient(circle at 35% 35%, #0b3a4d 0 40%, #102a36 41% 100%);
   overflow: hidden;
   display: flex;
+  -webkit-mask-image: -webkit-radial-gradient(white, black); /* force border-radius clip on mobile */
+  mask-image: radial-gradient(white, black);
 }
 
 .avatar img {
@@ -437,7 +439,6 @@ main {
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
 }
 
 .namecard {
